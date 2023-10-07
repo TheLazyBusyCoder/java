@@ -1,0 +1,75 @@
+//////////////////////////
+/// SWITCH STATEMENT (2023-10-07)
+//////////////////////////
+NOTES:
+
+	switch(value) {
+		case x: 
+		break;
+		case y: 
+		break;
+		default: 
+	}
+
+	// switch v2 
+
+	switch(value) {
+		case 1 , 10 , 15 -> "...code";		// this inside the function directly returns
+		case 2 -> ...code;
+		case 3 , 4 , 5 -> {
+			...codes;
+			yield "some value";
+		}
+		default -> yield "some value" ;
+	}
+
+//////////////////////////
+/// ArrayList (2023-10-07)
+//////////////////////////
+NOTES:
+
+// raw usage , we can add any data type
+ArrayList al = new ArrayList();
+
+// typed ArrayList
+
+ArrayList<datatype> al new ArrayList<datatype>();
+
+// creating array list from array of strings 
+import java.util.ArrayList;
+import java.util.List;
+ArrayList<String> al = new ArrayList<>(List.of(new String[]{"one" , "two"}));
+ArrayList<String> al = new ArrayList<>(List.of("one" , "two" , "three"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
