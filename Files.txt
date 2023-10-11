@@ -1,0 +1,406 @@
+import java.io.File
+
+This class supports a platform-independent definition of file and directory names.
+It also provides methods to list the files in a directory, to check the existence,
+readability, writeability, type, size, and modification time of files and directories, to
+make new directories, to rename files and directories, and to delete files and
+directories.
+
+public File(String path);
+public File(String path, String name);
+public File(File dir, String name);
+
+File f1 = new File("");
+
+// METHODS: 
+
+boolean canRead()- Returns True if the file is readable.
+
+boolean canWrite()- Returns True if the file is writeable.
+
+String getName()- Returns the name of the File with any directory names omitted.
+
+boolean exists()- Returns true if file exists
+
+String getAbsolutePath()- Returns the complete filename.
+
+
+String getParent() - Returns the directory of the File. If the File is an absolute
+specification.
+
+String getPath() - Returns the full name of the file, including the directory name.
+
+boolean isDirectory() - Returns true if File Object is a directory
+
+boolean isFile() - Returns true if File Object is a file
+
+long lastModified() - Returns the modification time of the file (which should be used
+
+for comparison with other file times only, and not interpreted as any particular time
+format).
+
+long length() - Returns the length of the file.
+
+boolean delete() - deletes a file or directory. Returns true after successful deletion of a
+file.
+
+boolean mkdir() - Creates a directory.
+
+boolean renameTo(File dest) - Renames a file or directory. Returns true after
+successful renaming
+
+
+////////////////////////////
+// DIRECTORIES
+
+A directory is a File that contains a list of other files & directories. 
+When you create a File object and it is a directory, the isDirectory() method will return true. In this case list method
+can be used to extract the list of other files & directories inside.
+
+public String[ ] list()
+public String[ ] list(FilenameFilter filter)
+
+// EXAMPLE
+import java.io.File;
+class Main {
+  public static void main(String args[]) {
+    String dirname = "one";
+    File f1 = new File(dirname);
+    if(f1.isDirectory()) {
+      String s[] = f1.list();
+      for(String ele : s) {
+        System.out.println(ele);
+      }
+    }
+  }
+}
+
+/////////////////////
+// STREAMS
+
+// When writing data to a stream, the stream is called an output stream.
+
+// Binary Streams contain binary data. Character Streams have character data and are used for storing and retrieving text.
+
+// ByteStream 
+// CharacterSTream
+
+1. InputStream. A stream to read binary data.
+2. OutputStream. A stream to write binary data.
+3. Reader. A stream to read characters.
+4. Writer. A stream to write characters.
+
+///////////////////////
+// ByteStream Classes
+
+// InputStream Methods -
+
+1. int read () - Returns an integer representation of next available byte of input.-1 is returned at the stream end.
+
+2. int read (byte buffer[ ]) - Read up to buffer.length bytes into buffer & returns actual number of bytes that are read. At the end returns –1.
+
+3. int read(byte buffer[ ], int offset, int numbytes) - Attempts to read up to numbytes bytes into buffer starting at buffer[offset]. Returns actual number of bytes that are read. At the end returns –1.
+
+4. void close() - to close the input stream
+
+5. void mark(int numbytes) - places a mark at current point in input stream & remain valid till number of bytes are read.
+
+6. void reset() - Resets pointer to previously set mark/ goes back to stream beginning.
+
+7. long skip(long numbytes) - skips number of bytes.
+
+8. int available() - Returns number of bytes currently available for reading.
+
+// OutputStream Methods-
+
+1.void close() - to close the OutputStream
+
+2. void write (int b) - Writes a single byte to an output stream.
+
+3. void write(byte buffer[ ]) - Writes a complete array of bytes to an output stream.
+
+4.void write (byte buffer[ ], int offset, int numbytes) - Writes a sub range of numbytes bytes from the array buffer, beginning at buffer[offset].
+
+5. void flush() - clears the buffer.
+
+///////////////////////
+// BYTE STREAM CLASSES
+
+BufferedInputStream
+BufferedOutputStream
+ByteArrayInputStream
+ByteArrayOutputStream
+DataInputStream
+DataOutputStream
+FileInputStream
+FileOutputStream
+FilterInputStream
+FilterOutputStream
+InputStream
+OutputStream
+PipedInputStream
+PipedOutputStream
+PrintStream
+PushbackInputStream
+RandomAccessFile
+SequenceInputStream
+
+////////////////////////
+// CharacterStream Classes
+
+// reading 
+
+1. int read () - Returns an integer representation of next available character from invoking stream. -1 is returned at the stream end.
+
+2. int read (char buffer[ ]) - Read up to buffer.length chacters to buffer & returns actual number of characters that are successfully read. At the end returns –1.
+
+3. int read(char buffer[ ], int offset, int numchars) - Attempts to read up to numchars into buffer starting at buffer[offset]. Returns actual number of characters that are read. At the end returns –1.
+
+4. void close() - to close the input stream.
+
+5. void mark(int numchars) - places a mark at current point in input stream & remain valid till number of characters are read.
+
+6. void reset() - Resets pointer to previously set mark/ goes back to stream beginning.
+
+7. long skip(long numchars) - skips number of characters.
+
+8. int available() - Returns number of bytes currently available for reading.
+
+// writing
+
+1. void close() - to close the OutputStream
+2. void write (int ch) - Writes a single character to an output stream.
+3. void write(char buffer[ ]) - Writes a complete array of characters to an output stream.
+4. void write (char buffer[ ], int offset, int numchars) - Writes a sub range of numchars from the array buffer, beginning at buffer[offset].
+5. void write(String str) - Writes str to output stream.
+6. void write(String str, int offset, int numchars) - Writes a subrange of numchars from string beginning at offset.
+7. void flush() - clears the buffer.
+
+// CLASSES: 
+
+BufferedReader
+Buffered input character stream.
+
+BufferedWriter
+Buffered output character stream.
+
+CharArrayReader
+Input stream that reads from a character array.
+
+CharArrayWriter
+Output stream that writes to a character array.
+
+FileReader
+Input stream that reads from a file.
+
+FileWriter
+Output stream that writes to a file.
+
+FilterReader
+Filtered reader.
+
+FilterWriter
+Filtered writer.
+
+InputStreamReader
+Input stream that translates bytes to characters.
+
+LineNumberReader
+Input stream that counts lines.
+
+OutputStreamWriter Output stream that translates characters to bytes.
+
+PipedReader Input
+pipe PipedWriter Output pipe.
+
+PrintWriter Output
+stream that contains print( ) and println( ).
+
+PushbackReader
+Input stream that allows characters to be returned to the input stream.
+
+Reader
+Abstract class that describes character stream input.
+
+StringReader
+Input stream that reads from a string.
+
+StringWriter
+Output stream that writes to a string.
+
+Writer
+Abstract class that describes character stream output.
+
+
+////////////////////
+// Random Access File
+
+Random access files permit non sequential, or random, access to a file's contents. To access a file randomly, you open the file, seek a particular location, and read from or write to that file. When opening a file using a RandomAccessFile, you can choose whether to open it read-only or read write.
+
+RandomAccessFile (File file, String mode) throws FileNotFoundException
+
+RandomAccessFile (String filePath, String mode) throws FileNotFoundException
+
+"rw"
+
+1. position – Returns the current position
+2. position(long) – Sets the position
+3. read(ByteBuffer) – Reads bytes into the buffer from the stream
+4. write(ByteBffer) – Writes bytes from the buffer to the stream
+5. truncate(long) – Truncates the file (or other entity) connected to the stream
+
+
+EXAMPLE: 
+
+File f = new File("data.dat");
+
+RandomAccessFile rand = new RandomAccessFile(f,"rw");
+
+rand.seek(f.length());
+
+rand.writeBytes("Append this line at the end"); 
+
+rand.close();
+
+System.out.println("Write-Successful");
+
+///////////////////////
+// EXAMPLES
+
+- READ LINES OF A FILE AND FIND A WORD IN THAT LINE
+- READ LINES OF FILE
+- READ AND WRITE TO A FILE
+- Program to read integers from a file using Scanner class
+- READ AND WRITE TO A FILE BUFFEREDREADER
+
+// READ AND WRITE TO A FILE BUFFEREDREADER
+public static void main(String[] args) {
+    try (
+        BufferedReader reader = new BufferedReader(new FileReader("fileone.txt"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("filetwo.txt"))
+         ) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        writer.write(line); // Write the line to the output file
+        writer.newLine(); // Move to the next line
+      }
+      // Add the "end of file" comment
+      writer.write("end of file");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+// Program to read integers from a file using Scanner class
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+public class Main {
+  public static void main (String args[]) {
+    FileReader fr;
+    try {
+      fr = new FileReader("one/input.txt");
+      Scanner sc = new Scanner(fr);
+      while(sc.hasNext()) {
+        System.out.println(sc.next());
+      }
+      sc.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    }  
+  } 
+} 
+
+// READ AND WRITE TO A FILE
+import java.io.*;
+public class Main {
+  public static void main (String args[]) throws IOException {
+    FileOutputStream fos = new FileOutputStream("one/output.txt");
+    DataOutputStream dos = new DataOutputStream(fos);
+    dos.writeInt(31);
+    dos.writeBoolean(true);
+    dos.writeChar('L');
+    dos.writeDouble(5.45);
+    fos.close();
+    
+    FileInputStream fis = new FileInputStream("one/output.txt") ;
+    DataInputStream dis = new DataInputStream(fis);
+    int num = dis.readInt();
+    boolean b = dis.readBoolean();
+    char ch = dis.readChar();
+    double dbl = dis.readDouble();
+    System.out.println("Int- "+num +"\nBoolean- "+b);
+    System.out.println("Character- "+ch+"\nDouble- "+dbl);
+    fis.close();
+  } 
+} 
+
+// READ LINES OF FILE
+  public static void main (String args[]) {
+    try {
+      BufferedReader buf_reader = new BufferedReader(new FileReader(new File("one/one.txt")));
+      do {
+        String line = buf_reader.readLine();
+        if (line == null)
+          break;
+        System.out.println(line);
+      } while (true);
+      buf_reader.close();
+    }
+    catch (IOException e) {
+      System.out.println("IO exception = " + e );
+    }
+  } 
+
+// READ LINES OF A FILE AND FIND A WORD IN THAT LINE
+  public static void main (String args[]) {
+    int num_lines = 0;
+    try {
+      BufferedReader buf_reader = new BufferedReader(new FileReader(new File("one/one.txt")));
+      do {
+        String line = buf_reader.readLine();
+        if (line == null)
+          break;
+        if (line.indexOf("two") != -1)
+          num_lines++;
+      } while (true);
+      buf_reader.close();
+    }
+    catch (IOException e) {
+      System.out.println("IO exception = " + e );
+    }
+    System.out.println("No of lines containing " + "two" + ": " + num_lines);
+  } 
+ 
+
+////////////////////////
+// RANDOM ACCESS FILE EXAMPLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

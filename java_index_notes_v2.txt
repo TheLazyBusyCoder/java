@@ -1,0 +1,84 @@
+//////////////////////////
+/// LIST
+
+record somthing(int one , int two) {
+  somthing(int one) {
+    this(one , 2);
+  }
+}
+
+somthing s = new somthing(5);
+System.out.println(s.toString());
+
+ArrayList somthing = new ArrayList(); <- this way somthing can contains other datatype 
+ArrayList<int> somthing = new ArrayList<>();
+somthing.add(1);  // add val to end of the list
+somthing.add(0,1);  // add val at 0 index to end of the list
+somthing.set(0,1);  // replace val at 0 index to end of the list
+somthing.remove(index); 
+
+//////////////////////////
+/// LIST
+
+String[] items = {"leo" , "leo" , "leo" , "leo"};
+List<String> list = List.of(items); // we cannot change list , immutable
+
+ArrayList<String> al = new ArrayList<>(list); // using list to create al
+al.add("leo");
+
+// creating in one go. 
+ArraList<String> al = new ArrayList<>(
+  List.of("one" , "two" , "three" , "four")
+);
+
+// to add 2 List
+one.addAll(two);
+
+al.get(2); // to get element
+
+list.contains(data); // to search for a value. 
+
+.indexOf() 
+.lastIndexOf();
+
+list.remove(index);
+list.remove(object);
+
+list.removeAll(List.of("one" , "two"));
+
+.retainAll(List.of("one" , "two" , "three")); // keep the data passed , and remove rest. 
+
+.clear(); // remove all
+
+.isEmpty(); 
+
+// second method to create list
+
+List<String> list = Arrays.asList("one" , "two" , "three");
+
+// to sort list
+
+list.sort(Comarator.naturalOrder()); 
+list.sort(Comarator.reverseOrder()); 
+
+// to convert list 2 array
+
+var array = list.toArray(new String[list.size()]);
+EXAMPLE: 
+
+ArrayList<String> al = new ArrayList<>();
+    al.add("Leo");
+    al.add("Priya");
+    al.addAll(List.of("Leo" , "Priya"));
+    System.out.println(al);
+    String[] a = al.toArray(new String[al.size()]);
+    for (String aa : a) {
+      System.out.println(aa);
+    }
+
+/// MULTIDIMENSIONAL ARRAY LIST
+ArrayList<ArrayList<int>> al = new ArrayList<>();
+
+/// ARRAY LIST FROM AN ARRAY
+int[] ogArray = new int[]{1,2,3,4};
+var ogList = Arrays.asList(ogArray);

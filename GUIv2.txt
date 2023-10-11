@@ -1,0 +1,932 @@
+- JFRAME 
+- LABELS
+- PANELS
+- BUTTONS
+- BORDER LAYOUT
+- FLOW LAYOUT
+- GRID LAYOUT
+- JLAYERDPANE
+- OPEN NEW WINDOW
+- JOptionPane
+- TEXTFIELDS
+- CHECKBOX
+- RADIO BUTTONS
+- COMBO BOX
+- JSLIDERS
+- PROGRESS BAR
+- MENUBAR
+- FILE SELECTOR
+- COLOR CHOOSER
+- KEY LISTENER INTERFACE
+- MOUSE LISTNER
+- KEY BINDINGS
+
+/////////////////////////
+// KEY BINDINGS
+
+// more flexible , a + w is possible 
+// each component can have its own key bindings (2 player games)
+
+public class Game {
+  Action upAction, downAction , leftAction , rightAction;
+  JFrame frame;
+  JLabel label;
+  Game() {
+    label = new JLabel();
+    frame = new JFrame();
+    label.setBounds(0,0,100,100);
+    label.setBackground(Color.red);
+    label.setOpaque(true);
+    upAction = new UpAction();
+    downAction = new DownAction();
+    leftAction = new LeftAction();
+    rightAction = new RightAction();
+    label.getInputMap().put(KeyStroke.getKeyStroke("UP"), "upAction");
+    label.getActionMap().put("upAction" , upAction);
+    frame.add(label);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLayout(null);
+    frame.setSize(500 , 500);
+    frame.setVisible(true);
+  }
+  public class UpAction extends AbstractAction {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      label.setLocation(label.getX() , label.getY() - 10);
+    }
+    
+  }
+  public class DownAction extends AbstractAction {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      // TODO Auto-generated method stub
+      
+    }
+    
+  }
+  public class LeftAction extends AbstractAction {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      // TODO Auto-generated method stub
+      
+    }
+    
+  }
+  public class RightAction extends AbstractAction {
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+      // TODO Auto-generated method stub
+      
+    }
+  }
+}
+
+/////////////////////////
+// MOUSE LISTNER
+
+class MyFrame extends JFrame implements MouseListener  {
+  JLabel label = new JLabel();
+  
+  MyFrame() {
+    label.setBounds(0,0,500,500);
+    label.setBackground(Color.red);
+    label.setOpaque(true);
+    label.addMouseListener(this);
+    
+    this.add(label);
+    this.setSize(500,500);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.getContentPane().setBackground(Color.black);
+    this.setLayout(null);
+    this.setVisible(true);
+  }
+
+  @Override
+  public void mouseClicked(MouseEvent e) {
+    // pressed and released on a component
+    System.out.println("X: " + e.getX() + "\n" + "Y: " + e.getY());
+  }
+
+  @Override
+  public void mousePressed(MouseEvent e) {
+    // hold down mouse on a component
+    
+  }
+
+  @Override
+  public void mouseReleased(MouseEvent e) {
+    // release on an component
+    
+  }
+
+  @Override
+  public void mouseEntered(MouseEvent e) {
+    // entered 
+    System.out.println("Entered: ");
+    System.out.println("X: " + e.getX() + "\n" + "Y: " + e.getY());
+  }
+
+  @Override
+  public void mouseExited(MouseEvent e) {
+    // exit
+    
+  }
+}
+
+////////////////////////////////
+// KEY LISTENER INTERFACE
+
+class MyFrame extends JFrame implements KeyListener {
+  JLabel label = new JLabel();
+  
+  MyFrame() {
+  
+    label.setBounds(0,0,50,50);
+    label.setBackground(Color.red);
+    label.setOpaque(true);
+    
+    this.add(label);
+    this.setSize(500,500);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.getContentPane().setBackground(Color.black);
+    this.addKeyListener(this);
+    this.setLayout(null);
+    this.setVisible(true);
+  }
+  
+  @Override
+  public void keyTyped(KeyEvent e) {
+    // when a key is typed , uses keyChar , char output
+    
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+    // when a physical key is pressed , int output
+    
+    // simply moving the label. 
+    switch(e.getKeyCode()) {
+    case 37: label.setLocation(label.getX() - 10,label.getY()); break;
+    case 38: label.setLocation(label.getX(),label.getY() - 10); break;
+    case 39: label.setLocation(label.getX() + 10,label.getY()); break;
+    case 40: label.setLocation(label.getX(),label.getY() + 10); break;
+    }
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+    // when a button is released
+    System.out.println("key: " + e.getKeyChar());
+    
+    // its button number not char number q = Q = 81
+    System.out.println("code: " + e.getKeyCode());
+  }
+}
+
+//////////////////////////
+// COLOR CHOOSER
+
+// if the button is pressed : 
+  
+JColorChooser color = new JColorChooser();
+Color c = JColorChooser.showDialog(null , "title" , Color.black); // default color
+
+// we can use this color to set the color of other components 
+
+/////////////////////////
+// FILE SELECTOR
+
+// useful for text editor application. 
+
+public class MyFrame extends JFrame implements ActionListener {
+  JButton button = new JButton("Open File");
+  MyFrame() {
+    button.addActionListener(this);
+    button.setFont(new Font(null , 0 , 25));
+    
+    this.add(button);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.setVisible(true);
+    this.pack();
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == button) {
+      
+      JFileChooser fc = new JFileChooser();
+//      to open the dialog in a perticular folder
+//      fc.setCurrentDirectory(new File("path/"));
+      
+//      int resp = fc.showOpenDialog(null); // to open a file
+      int resp = fc.showSaveDialog(null); // to save a file 
+      
+      if(resp == JFileChooser.APPROVE_OPTION) {
+        File file = new File(fc.getSelectedFile().getAbsolutePath());
+        System.out.println(file.getAbsolutePath());
+      }
+    }
+  }
+}
+
+/////////////////////////
+// MENUBAR
+
+// top menu bar like vs code and ides 
+
+public class MyFrame extends JFrame implements ActionListener {
+  JMenuBar menuBar;
+  JMenu fileMenu, editMenu, sourceMenu;
+  JMenuItem open , save , exit;
+  
+  MyFrame() {
+    // Main box for menu bar
+    menuBar = new JMenuBar();
+
+    // content for menu
+    fileMenu = new JMenu("File");
+    editMenu = new JMenu("Edit");
+    sourceMenu = new JMenu("Source");
+
+    // sub options for menu items
+    open = new JMenuItem("open");
+    save = new JMenuItem("save");
+    exit = new JMenuItem("exit");
+    
+    // we can set Icons
+    open.setIcon(new ImageIcon("youtube_logo.png"));
+
+    // Adding ActionListener to items
+    open.addActionListener(this);
+    save.addActionListener(this);
+    exit.addActionListener(this);
+    
+    // Adding keyboard shortcuts for the items
+    open.setMnemonic(KeyEvent.VK_O);
+    save.setMnemonic(KeyEvent.VK_S);
+    exit.setMnemonic(KeyEvent.VK_E);
+    
+    // keyboard shortcuts for menu items
+    fileMenu.setMnemonic(KeyEvent.VK_F);  // alt + f
+    editMenu.setMnemonic(KeyEvent.VK_E);  // alt + e
+    
+    // adding sub items to menu item
+    fileMenu.add(open);
+    fileMenu.add(save);
+    fileMenu.add(exit);
+
+    // adding menu items to menu bar
+    menuBar.add(fileMenu);
+    menuBar.add(editMenu);
+    menuBar.add(sourceMenu);
+
+    // adding menu bar
+    this.setJMenuBar(menuBar);
+    this.setSize(500, 500);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.setVisible(true);
+  }
+  
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if (e.getSource() == open)
+      System.out.println("OPEN A FILE");
+    else if(e.getSource() == save) System.out.println("FILE SAVED");
+    else if(e.getSource() == exit) System.exit(0);;
+  }
+}
+
+//////////////////////////
+// PROGRESS BAR
+
+// processing 
+
+public class MyFrame {
+  
+  JFrame frame = new JFrame();
+  JProgressBar bar = new JProgressBar(0,100); // Min and Max value
+  
+  MyFrame() {
+    
+    bar.setValue(0);
+    bar.setBounds(0,0,500,100);
+    bar.setStringPainted(true);
+    
+    // setting the bar color
+    bar.setForeground(Color.red);
+    
+    frame.add(bar);
+    frame.setSize(500,500);
+    frame.setLayout(null);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+    
+    fill();
+  }
+  
+  public void fill() {
+    int counter = 0;
+    while(counter <= 100) {
+      bar.setValue(counter);
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+      counter += 10;
+    }
+    bar.setString("Done!!!");
+    bar.setForeground(Color.green);
+  }
+}
+
+///////////////////////////
+// JSLIDERS
+
+// implements ChangeListener {} 
+
+public class MyFrame implements ChangeListener {
+  JFrame frame;
+  JPanel panel;
+  JLabel label;
+  JSlider slider;
+  
+  MyFrame() {
+    frame = new JFrame("Slider demo");
+    
+    panel = new JPanel();
+    
+    slider = new JSlider(0,100,50);
+    slider.setPreferredSize(new Dimension(400 , 200));
+    slider.setPaintTicks(true);
+    slider.setMajorTickSpacing(25);// after 25 there will be big line
+    slider.setMinorTickSpacing(10); // after 10 there will be small lines
+    slider.setPaintLabels(true);    
+    slider.setOrientation(SwingConstants.VERTICAL); // to flip the bar
+    
+    // to send change listener
+    slider.addChangeListener(this);
+    label = new JLabel();
+    label.setFont(new Font(null , 0 , 25));
+    label.setText("Number: " + slider.getValue());
+    
+    panel.add(slider);
+    panel.add(label);
+    
+    frame.add(panel);
+    frame.setSize(400,500);
+    frame.setVisible(true);
+  }
+  @Override
+  public void stateChanged(ChangeEvent e) {
+    // to listen change event
+    label.setText("Number: " + slider.getValue());
+  }
+}
+
+//////////////////////////
+// COMBO BOX
+
+// drop down list 
+
+// if you want to store a premitive data type use wrapper class Integer for int
+
+public class MyFrame extends JFrame implements ActionListener {
+
+  JComboBox comboBox;
+  
+  MyFrame() {
+    String[] names = {"leo" , "priya" , "elevele"};
+    comboBox  = new JComboBox(names);
+    
+    comboBox.addActionListener(this);
+    
+    // methods on JComboBox
+    comboBox.getItemCount();  // returns the number of items.
+    comboBox.addItem("one");
+    comboBox.insertItemAt("two", 0);
+    comboBox.setSelectedIndex(0);
+    comboBox.removeItem("leo");
+    comboBox.removeItemAt(0);
+    comboBox.removeAll();
+    
+    this.add(comboBox);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.pack();
+    this.setVisible(true);
+  }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == comboBox) {
+      System.out.println(comboBox.getSelectedItem());
+    }
+  }
+}
+
+////////////////////////////
+// RADIO BUTTONS
+
+// many buttons but can select only one
+
+public class MyFrame extends JFrame implements ActionListener {
+
+  JRadioButton radioButton1 = new JRadioButton("one");
+  JRadioButton radioButton2 = new JRadioButton("two");
+  JRadioButton radioButton3 = new JRadioButton("three");
+  
+  MyFrame() {
+  
+    // so that we can select only one
+    ButtonGroup group = new ButtonGroup();
+    group.add(radioButton1);
+    group.add(radioButton2);
+    group.add(radioButton3);
+    
+    // to add event listner to the buttons
+    radioButton1.addActionListener(this);
+    radioButton2.addActionListener(this);
+    radioButton3.addActionListener(this);
+    
+    // adding buttons to the frame
+    this.add(radioButton1);
+    this.add(radioButton2);
+    this.add(radioButton3);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.pack();
+    this.setVisible(true);
+  }
+  
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == radioButton1) 
+      System.out.println("one");
+    else if(e.getSource() == radioButton2) 
+      System.out.println("two");
+    else if(e.getSource() == radioButton3) 
+      System.out.println("three");
+  }
+}
+
+/////////////////////////////
+// CHECKBOX
+
+public class MyFrame extends JFrame implements ActionListener {
+  JButton button = new JButton("submit");
+  JCheckBox checkBox;
+  MyFrame() {
+    
+    // JCheckBox options
+    checkBox = new JCheckBox();
+    checkBox.setText("Are you Human?");
+    checkBox.setFocusable(false);
+    
+    // to add icon
+    ImageIcon green = new ImageIcon("");
+    ImageIcon red = new ImageIcon("");
+    checkBox.setIcon(image); 
+    checkBox.setSelectedIcon(red);
+    
+    button.addActionListener(this);
+    button.setPreferredSize(new Dimension(120,40));
+    button.setFont(new Font(null , 0 , 23));
+    
+    this.add(checkBox);
+    this.add(button);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.pack();
+    this.setVisible(true);
+  }
+  
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == button) {
+      System.out.println(checkBox.isSelected());
+    }
+  }
+  
+}
+
+//////////////////////////
+// TEXTFIELDS
+
+// component to add , set or get text 
+// textboxs 
+// needs action listener
+
+// In a different class 
+
+public class MyFrame extends JFrame implements ActionListener {
+
+  JButton button = new JButton("submit");
+  JTextField textField = new JTextField();
+  
+  MyFrame() {
+    
+    // JTextField options
+    textField.setPreferredSize(new Dimension(250,40));
+    textField.setFont(new Font(null , 0 , 23));
+    textField.setCaretColor(Color.black); // cursor color
+    textField.setEditable(false); // to disable editing
+    
+    button.addActionListener(this);
+    button.setPreferredSize(new Dimension(120,40));
+    button.setFont(new Font(null , 0 , 23));
+    
+    this.add(textField);
+    this.add(button);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    this.setLayout(new FlowLayout());
+    this.pack();
+    this.setVisible(true);
+  }
+  
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    // TODO Auto-generated method stub
+    if(e.getSource() == button) {
+    
+      // we can get or set text of textFields
+      System.out.println(textField.getText());
+      textField.setText("");
+    }
+  }
+}
+
+///////////////////////////
+// JOptionPane
+
+// popup's for taking input or showing message's 
+
+// normal 
+JOptionPane.showMessageDialog(null , "Hello" , "title" , JOptionPane.PLAIN_MESSAGE );
+
+JOptionPane.showConfirmDialog(null, "Yes or No?", null, JOptionPane.OK_CANCEL_OPTION, 0);
+
+// all in one
+    ImageIcon icon = new ImageIcon("youtube_logo.png");
+    String[] response = { "Yes" , "No" , "Maybe"};
+    JOptionPane.showOptionDialog(null,
+     "Message",
+      "Title" ,
+      JOptionPane.YES_NO_CANCEL_OPTION,
+      JOptionPane.INFORMATION_MESSAGE, 
+      icon, 
+      response, 
+      0);
+
+///////////////////////////
+// OPEN NEW WINDOW
+
+// for each window create a new class.
+// its simple you can do it. 
+
+////////////////////////
+// JLAYERDPANE
+
+// staked components
+// container that provides 3rd dimensions for positioning 
+// z-index. 
+
+    JFrame frame = new JFrame();
+    frame.setSize(500,500);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLayout(null);
+    
+    JLabel label1 = new JLabel();
+    JLabel label2 = new JLabel();
+    JLabel label3 = new JLabel();
+    
+    label1.setOpaque(true);
+    label1.setBackground(Color.red);
+    label1.setBounds(50,50,200,200);
+    
+    label2.setOpaque(true);
+    label2.setBackground(Color.green);
+    label2.setBounds(100,100,200,200);
+    
+    label3.setOpaque(true);
+    label3.setBackground(Color.blue);
+    label3.setBounds(150,150,200,200);
+    
+    JLayeredPane layerdPane = new JLayeredPane();
+    layerdPane.setBounds(0,0,500,500);
+    
+    layerdPane.add(label1);
+    layerdPane.add(label2);
+    layerdPane.add(label3);
+    
+    frame.add(layerdPane);
+    frame.setVisible(true);
+    
+// to change the layer of the component 
+
+DEFAULT
+PALETTE
+MODAL
+POPUP
+DRAG
+
+  layeredPane.add(label1 , JLayeredPane.DEFAULT_LAYER);
+  layeredPane.add(label2 , JLayeredPane.DRAG_LAYER);
+
+// if you dont want to remember name's 
+  layeredPane.add(label3 , Integer.valueOf(0));
+  layeredPane.add(label4 , Integer.valueOf(1));
+
+//////////////////////
+// GRID LAYOUT
+
+// grid of cells 
+// each component takes all the available space within its cell. 
+// each cell is same size. 
+
+JFrame frame = new JFrame();
+frame.setSize(500,500);
+frame.setLayout(new GridLayout(3,3,10,10)); // H margin , V margin
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+frame.add(new JButton("1"));
+frame.add(new JButton("2"));
+frame.add(new JButton("3"));
+frame.add(new JButton("4"));
+frame.add(new JButton("5"));
+frame.add(new JButton("6"));
+frame.add(new JButton("7"));
+frame.add(new JButton("8"));
+frame.add(new JButton("9")); 
+
+frame.setVisible(true);
+
+///////////////////////
+// FLOW LAYOUT
+
+// if the width is less the components will be push down to the next row
+
+JFrame frame = new JFrame();
+frame.setSize(500,500);
+
+// alignment of the component , Horizantal , Vertical spacing
+frame.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+frame.add(new JButton("1"));
+frame.add(new JButton("2"));
+frame.add(new JButton("3"));
+frame.add(new JButton("4"));
+frame.add(new JButton("5"));
+frame.add(new JButton("6"));
+frame.add(new JButton("7"));
+frame.add(new JButton("8"));
+frame.add(new JButton("9"));
+
+frame.setVisible(true);
+
+
+///////////////////////
+// BORDER LAYOUT
+
+// places the component in: NORTH , SOUTH , WEST , EAST AND CENTER
+
+JFrame frame = new JFrame();
+frame.setVisible(true);
+frame.setSize(500,500);
+// we can also set margin W and H between west center and east
+frame.setLayout(new BorderLayout(10,10));
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+// creating new panels 
+JPanel panel1 = new JPanel();
+JPanel panel2 = new JPanel();
+JPanel panel3 = new JPanel();
+JPanel panel4 = new JPanel();
+JPanel panel5 = new JPanel();
+
+// setting the bgcolor of panels
+panel1.setBackground(Color.red);
+panel2.setBackground(Color.green);
+panel3.setBackground(Color.yellow);
+panel4.setBackground(Color.blue);
+panel5.setBackground(Color.black);
+
+// only height will be affected
+panel1.setPreferredSize(new Dimension(100, 100));
+panel2.setPreferredSize(new Dimension(100, 100));
+panel3.setPreferredSize(new Dimension(100, 100));
+panel4.setPreferredSize(new Dimension(100, 100));
+panel5.setPreferredSize(new Dimension(100, 100));
+
+// add panels to frame
+frame.add(panel1 , BorderLayout.NORTH);
+frame.add(panel2 , BorderLayout.SOUTH);
+frame.add(panel3 , BorderLayout.WEST);
+frame.add(panel4 , BorderLayout.EAST);
+frame.add(panel5 , BorderLayout.CENTER);
+
+///////////////////////
+//  BUTTONS
+
+// remove the annowing text box on the button 
+button.setFocusable(false);
+
+// create in our own class
+// buttons implement ActionListener
+// we can use lamda expression to reduce the code. 
+
+public class MyFrame extends JFrame implements ActionListener {
+
+  JButton button;
+  MyFrame() {
+  // creating the button 
+    button = new JButton();
+    button.setBounds(100,100,250,50);
+    button.setText("Click Me");
+    button.setBackground(new Color(255,255,255));
+    button.setFont(new Font("monospace" , Font.BOLD , 25));
+    // adding the event listner
+    button.addActionListener(this);
+    
+    this.setTitle("My Window");
+    this.setSize(720 , 720);
+    this.setVisible(true);
+    this.getContentPane().setBackground(new Color(0,0,0));
+    ImageIcon image = new ImageIcon("youtube_logo.png");
+    this.setIconImage(image.getImage());
+    this.setResizable(false);
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    this.add(button);
+  }
+
+  // implementing the action listner
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource() == button) {
+      System.out.println("Button Clicked");
+    }
+  }
+}
+
+// USING LAMDA EXPRESSION 
+
+// don't need to implement ActionListener and that method
+button.addActionListener(e -> System.out.println("Hello"));
+
+
+
+//////////////////////
+// PANELS
+
+// set the height and width using dimension
+panel1.setPreferredSize(new Dimension(100, 100));
+
+// GUI container for other component 
+// We can add components to our panel, just like frames 
+// by default panels use flow layout manager , if items execeds the width it will wrap. 
+// 1 component belongs to 1 panel
+
+// creating component for panel. 
+JLabel label = new JLabel();
+label.setText("Some Text");
+label.setFont(new Font("monospace" , Font.BOLD , 35));
+label.setSize(500,250);
+label.setHorizontalAlignment(JLabel.CENTER);
+label.setVerticalAlignment(JLabel.CENTER);
+Border border = BorderFactory.createLineBorder(Color.black , 5);
+label.setBorder(border);
+
+// creating panel
+JPanel red_panel = new JPanel();
+red_panel.setBackground(new Color(255,0,0));
+red_panel.setBounds(0, 0, 250, 250);
+
+// changing the layout of the panel
+green_panel.setLayout(new BorderLayout());
+green_panel.add(label);
+
+// adding panel to the frame
+frame.add(red_panel);
+
+/////////////////////
+// LABELS
+
+// get current position of label
+label.getX();
+label.getY();
+
+// to change the position of the label
+label.setLocation(x,y);
+
+// hiding the label
+label.setVisible(false);
+
+// setting the size of labels 
+label.setSize(50,50);
+
+// GUI - component to display string of text , image or both. 
+JFrame frame = new JFrame("My Frame");
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+JLabel label = new JLabel();
+label.setText("Some text");
+
+ImageIcon image = new ImageIcon("youtube_logo.png");
+label.setIcon(image); // we can add image to label
+
+// text position
+label.setHorizontalTextPosition(JLabel.CENTER);
+label.setVerticalTextPosition(JLabel.TOP);
+
+// font color & style
+label.setForeground(new Color(0,255,0));  // set font color
+label.setFont(new Font("monospace" , Font.BOLD , 35));  // set font
+
+label.setIconTextGap(10); // gap between text and image.
+
+// background color
+label.setBackground(new Color(0,0,0));
+label.setOpaque(true);  // label takes the whole W and H
+
+// adding border to label
+Border border = BorderFactory.createLineBorder(Color.green , 5);
+label.setBorder(border);
+
+// aligning the content of label 
+label.setVerticalAlignment(JLabel.CENTER);
+label.setHorizontalAlignment(JLabel.CENTER);
+
+// setting the label height and width and position
+label.setBounds(0, 0, 500, 500);  // setting the position + H && W
+
+// change the default layout manager
+frame.setLayout(null);  // so that label should not take full width
+
+frame.add(label); // adding label to the frame
+
+frame.setVisible(true);
+frame.setSize(700 , 700);
+
+//size of the frame will be responsive according to the contents in it.
+// we need to comment , setSize() of frame , and label.setBounds() 
+// add all the components before using pack(); 
+frame.pack();
+
+
+////////////////////
+// JFRAME
+
+// close the window 
+frame.dispose();
+
+// always keep the line at the bottom.
+frame.setVisible(true);
+
+// set the layout manager to null
+frame.setLayout(null);
+
+
+JFrame frame = new JFrame("My window");
+frame.setVisiblity(true);
+JFrame frame = new JFrame();
+frame.setSize(1270 , 720);
+frame.setVisible(true);
+frame.setTitle("My Window");
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setResizable(false);  // prevent frame from resize
+
+// CUSTOME IMAGE ICON
+ImageIcon image = new ImageIcon("path");
+frame.setIconImage(image.getImage);
+
+// CHANGE BACKGROUND COLOUR
+frame.getContentPane().setBackground(Color.black);
+frame.getContentPane().setBackground(new Color(0,0,0)); // RGB values
+
+// SHIFT THIS CODE TO ANOTHER CLASS
+
+public class MyFrame extends JFrame {
+  MyFrame() {
+    this.setTitle("My Window");
+    this.setSize(1270 , 700);
+    this.setVisible(true);
+    this.getContentPane().setBackground(new Color(0,0,0));
+    ImageIcon image = new ImageIcon("youtube_logo.png");
+    this.setIconImage(image.getImage());
+    this.setResizable(false);
+  }
+}
+
+// in Main.java
+new MyFrame();
+
+// ADD BACKGROUND TO FRAME
+frame.getContentPane().setBackground(new Color(0,0,0));
+
+// CHANGE THE ICON IN THE FRAME
+ImageIcon image = new ImageIcon("youtube_logo.png");
+frame.setIconImage(image.getImage());
