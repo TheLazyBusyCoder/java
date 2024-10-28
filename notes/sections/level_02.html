@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics 2</title>
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <script src="../prism/prism.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="block language-java">
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Package structure</div>
+        <div class="content">
+          <pre><code id='code0'></code></pre>
+          <pre><code id='code1'></code></pre>
+          <pre><code id='code2'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <h3>Opp's</h3>
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Access Modifiers</div>
+        <div class="content">
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>public</td>
+                <td>
+                  Accessible from any other class in the program. It allows
+                  unrestricted access.
+                </td>
+              </tr>
+              <tr>
+                <td>protected</td>
+                <td>
+                  Accessible within the same package and by subclasses in other
+                  packages. Used for inheritance.
+                </td>
+              </tr>
+              <tr>
+                <td>default (no modifier)</td>
+                <td>
+                  Accessible only within the same package. This is the
+                  package-private access level, used when no modifier is
+                  specified.
+                </td>
+              </tr>
+              <tr>
+                <td>private</td>
+                <td>
+                  Accessible only within the same class. This provides the
+                  highest level of restriction.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Simple Class</div>
+        <div class="content">
+          <pre><code id='code3'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Different types of class</div>
+        <div class="content">
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Regular Class</td>
+                <td>
+                  A standard class with properties and methods that can be
+                  instantiated.
+                </td>
+                <td><code>class Car { }</code></td>
+              </tr>
+              <tr>
+                <td>Abstract Class</td>
+                <td>
+                  A class that cannot be instantiated and may contain abstract
+                  methods (methods without a body).
+                </td>
+                <td>
+                  <code>abstract class Vehicle { abstract void move(); }</code>
+                </td>
+              </tr>
+              <tr>
+                <td>Final Class</td>
+                <td>A class that cannot be subclassed or extended.</td>
+                <td><code>final class Constants { }</code></td>
+              </tr>
+              <tr>
+                <td>Static Nested Class</td>
+                <td>
+                  A static class defined within another class, can be accessed
+                  without instantiating the outer class.
+                </td>
+                <td><code>class Outer { static class Inner { } }</code></td>
+              </tr>
+              <tr>
+                <td>Inner Class</td>
+                <td>
+                  A non-static class defined within another class, often used
+                  for grouping logically related classes.
+                </td>
+                <td><code>class Outer { class Inner { } }</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Final Class Example</div>
+        <div class="content">
+          <pre><code id='code4'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Inheritance</div>
+        <div class="content">
+          <p>
+            Parent child relationship where child has access to parent methods
+            and feilds
+          </p>
+          <pre><code id='code5'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Encapsulation</div>
+        <div class="content">
+          <p>
+            Encapsulation is one of the fundamental concepts in object-oriented
+            programming (OOP) that restricts direct access to some of an
+            object's components. This is typically achieved by making the fields
+            (attributes) of a class private and providing public getter and
+            setter methods to access and update those fields.
+          </p>
+          <pre><code id='code6'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Abstraction</div>
+        <div class="content">
+          <p>
+            Abstraction in Java is a fundamental concept in object-oriented
+            programming that allows you to hide complex implementation details
+            and show only the essential features of an object.
+          </p>
+          <pre><code id='code7'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Polymorphism</div>
+        <div class="content">
+          <p>
+            Objects to be treated as instances of their parent class, even when
+            they are actually instances of a subclass. In Java, polymorphism can
+            be achieved through method overriding (runtime polymorphism) and
+            method overloading (compile-time polymorphism).
+          </p>
+          <pre><code id='code8'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Composition</div>
+        <div class="content">
+          <p>
+            Small classes making a big class (product). Small classes are
+            variables of PC class.
+          </p>
+          <pre><code id='code9'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Method Overloading VS Overriding</div>
+        <div class="content">
+          <ul>
+            <li>Should have same return type</li>
+            <li>
+              Should not have same number of parameter with different name
+            </li>
+            <li>
+              Method overloading = same name , different parameter , return type
+              can be different
+            </li>
+            <li>
+              Method overriding = (same name and same parameter is allowed)
+              child is overloading parent method (@Override <- add this above
+              function) (static methods cannot be overridden)
+            </li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Exception</div>
+        <div class="content">
+          <pre><code id='code10'></code></pre>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <script src="../script.js"></script>
+    <script src="./level_02.js"></script>
+  </body>
+</html>

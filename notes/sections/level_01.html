@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Section 9</title>
+    <title>Basics 1</title>
     <link rel="stylesheet" href="../prism/prism.css" />
     <script src="../prism/prism.js"></script>
     <link rel="stylesheet" href="../style.css" />
@@ -14,18 +14,221 @@
       <div class="dropdown">
         <div class="heading">Starting point</div>
         <div class="content">
-          <pre><code >package compi;
+          <pre><code id="code1"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Declaring variables</div>
+        <div class="content">
+          <pre><code id="code2"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Printing</div>
+        <div class="content">
+          <pre><code>System.out.println("New line printing");
+System.out.print("One line printing");
+System.out.printf("One: %d, Two: %d", 1,2);</code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">If else</div>
+        <div class="content">
+          <pre><code id='code3'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Operators</div>
+        <div class="content">
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Arithmetic Operators -->
+              <tr>
+                <td>+</td>
+                <td>Addition</td>
+                <td><code>int x = 10 + 5; // 15</code></td>
+              </tr>
+              <tr>
+                <td>-</td>
+                <td>Subtraction</td>
+                <td><code>int y = 10 - 5; // 5</code></td>
+              </tr>
+              <tr>
+                <td>*</td>
+                <td>Multiplication</td>
+                <td><code>int z = 10 * 5; // 50</code></td>
+              </tr>
+              <tr>
+                <td>/</td>
+                <td>Division</td>
+                <td><code>int a = 10 / 5; // 2</code></td>
+              </tr>
+              <tr>
+                <td>%</td>
+                <td>Modulus</td>
+                <td><code>int b = 10 % 3; // 1</code></td>
+              </tr>
 
-public class Main {
-  public static void main(String[] args) {
-    
-  }
-}</code></pre>
+              <!-- Unary Operators -->
+              <tr>
+                <td>++</td>
+                <td>Increment</td>
+                <td><code>int x = 5; x++; // 6</code></td>
+              </tr>
+              <tr>
+                <td>--</td>
+                <td>Decrement</td>
+                <td><code>int y = 5; y--; // 4</code></td>
+              </tr>
+              <tr>
+                <td>!</td>
+                <td>Logical NOT</td>
+                <td><code>boolean isTrue = !false; // true</code></td>
+              </tr>
+
+              <!-- Assignment Operators -->
+              <tr>
+                <td>=</td>
+                <td>Assignment</td>
+                <td><code>int x = 10;</code></td>
+              </tr>
+              <tr>
+                <td>+=</td>
+                <td>Add and Assign</td>
+                <td><code>x += 5; // x = x + 5</code></td>
+              </tr>
+              <tr>
+                <td>-=</td>
+                <td>Subtract and Assign</td>
+                <td><code>y -= 3; // y = y - 3</code></td>
+              </tr>
+
+              <!-- Relational Operators -->
+              <tr>
+                <td>==</td>
+                <td>Equal to</td>
+                <td><code>x == y</code></td>
+              </tr>
+              <tr>
+                <td>!=</td>
+                <td>Not equal to</td>
+                <td><code>x != y</code></td>
+              </tr>
+              <tr>
+                <td>&gt;</td>
+                <td>Greater than</td>
+                <td><code>x > y</code></td>
+              </tr>
+              <tr>
+                <td>&lt;</td>
+                <td>Less than</td>
+                <td><code>x < y</code></td>
+              </tr>
+
+              <!-- Logical Operators -->
+              <tr>
+                <td>&&</td>
+                <td>Logical AND</td>
+                <td><code>(x &gt; 5) && (y &lt; 10)</code></td>
+              </tr>
+              <tr>
+                <td>||</td>
+                <td>Logical OR</td>
+                <td><code>(x &gt; 5) || (y &lt; 10)</code></td>
+              </tr>
+
+              <!-- Bitwise Operators -->
+              <tr>
+                <td>&</td>
+                <td>Bitwise AND</td>
+                <td><code>x &amp; y</code></td>
+              </tr>
+              <tr>
+                <td>|</td>
+                <td>Bitwise OR</td>
+                <td><code>x | y</code></td>
+              </tr>
+              <tr>
+                <td>^</td>
+                <td>Bitwise XOR</td>
+                <td><code>x ^ y</code></td>
+              </tr>
+              <tr>
+                <td>~</td>
+                <td>Bitwise NOT</td>
+                <td><code>~x</code></td>
+              </tr>
+
+              <!-- Ternary Operator -->
+              <tr>
+                <td>?:</td>
+                <td>Ternary (If-else)</td>
+                <td>
+                  <code
+                    >String result = (age &gt;= 18) ? "Adult" : "Minor";</code
+                  >
+                </td>
+              </tr>
+
+              <!-- instanceof Operator -->
+              <tr>
+                <td>instanceof</td>
+                <td>Type Check</td>
+                <td><code>if (obj instanceof String)</code></td>
+              </tr>
+
+              <!-- Type-Casting Operators -->
+              <tr>
+                <td>(type)</td>
+                <td>Type Casting</td>
+                <td><code>int intValue = (int) doubleValue;</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Loops</div>
+        <div class="content">
+          <pre><code id='code4'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Functions</div>
+        <div class="content">
+          <pre><code id='code5'></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Array</div>
+        <div class="content">
+          <pre><code id='code6'></code></pre>
         </div>
       </div>
       <hr />
     </div>
     <script src="../script.js"></script>
-    <script src="./section_9.js"></script>
+    <script src="./level_01.js"></script>
   </body>
 </html>
