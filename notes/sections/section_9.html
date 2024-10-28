@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Section 9</title>
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <script src="../prism/prism.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <div class="block language-dart">
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Creating flutter project</div>
+        <div class="content">
+          <pre><code>flutter create finstagram</code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Named routes</div>
+        <div class="content">
+          <p>lib/main.dart</p>
+          <pre><code>import 'package:finstagram/pages/login_page.dart';
+import 'package:finstagram/pages/register_page.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Finstagram',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+      ),
+      initialRoute: 'login',
+      routes: {
+        "register": (context) => RegisterPage(),
+        "login": (context) => LoginPage(),
+      },
+    );
+  }
+}
+</code></pre>
+          <p>lib/pages/login_page.dart</p>
+          <pre><code>import 'package:flutter/material.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State&lt;StatefulWidget&gt; createState() {
+    return _LoginPageState();
+  }
+}
+
+class _LoginPageState extends State&lt;LoginPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Colors.green,
+      ),
+    );
+  }
+}
+</code></pre>
+          <p>lib/pages/register_page.dart</p>
+          <pre><code>import 'package:flutter/material.dart';
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
+
+  @override
+  State&lt;StatefulWidget&gt; createState() {
+    return _RegisterPageState();
+  }
+}
+
+class _RegisterPageState extends State&lt;RegisterPage&gt; {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Colors.red,
+      ),
+    );
+  }
+}
+</code></pre>
+        </div>
+      </div>
+      <hr />
+
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Login Page UI</div>
+        <div class="content">
+          <p>lib/pages/login_page</p>
+          <pre><code>import 'package:flutter/material.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State&lt;StatefulWidget&gt; createState() {
+    return _LoginPageState();
+  }
+}
+
+class _LoginPageState extends State&lt;LoginPage&gt; {
+  double? _height, _width;
+
+  @override
+  Widget build(BuildContext context) {
+    _height = MediaQuery.of(context).size.height;
+    _width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.symmetric(
+            horizontal: _height! * 0.05,
+          ),
+          color: Colors.green,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              _titleWidget(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _titleWidget() {
+    return const Text(
+      'Finstagram',
+      style: TextStyle(
+        color: Colors.black,
+        fontSize: 25,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
+
+  Widget _loginButton() {
+    return MaterialButton(
+      onPressed: () {},
+      minWidth: _width! * 0.70,
+      height: _height! * 0.06,
+      color: Colors.red,
+      child: const Text(
+        "Login",
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 25,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    );
+  }
+}
+</code></pre>
+        </div>
+      </div>
+      <hr />
+
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Working with Form and FormField Widgets</div>
+        <div class="content">
+          <p>lib/pages/login_page.dart</p>
+          <pre><code id="code1"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Validating & Saving Form Input</div>
+        <div class="content">
+          <p>lib/pages/login_page.dart</p>
+          <pre><code id="code2"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Navigating To Register Page</div>
+        <div class="content">
+          <p>lib/pages/login_page.dart</p>
+          <pre><code id="code3"></code></pre>
+        </div>
+      </div>
+      <hr />
+
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Register Page UI</div>
+        <div class="content">
+          <p>lib/pages/register_page.dart</p>
+          <pre><code id="code4"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Working with TextFormField Widget</div>
+        <div class="content">
+          <p>lib/pages/register_page.dart</p>
+          <pre><code id="code5"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Selecting Files From Device Storage</div>
+        <div class="content">
+          <p>install package</p>
+          <pre><code>flutter pub add file_picker</code></pre>
+          <p>lib/pages/register_page.dart</p>
+          <pre><code id="code6"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Validating and Saving Form Input</div>
+        <div class="content">
+          <p>lib/pages/register_page.dart</p>
+          <pre><code id="code7"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Adding Actions To AppBar</div>
+        <div class="content">
+          <p>lib/main.dart</p>
+          <pre><code id="code8"></code></pre>
+          <p>lib/pages/home_paeg.dart</p>
+          <pre><code id="code9"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Bottom Navigation Bar Widget</div>
+        <div class="content">
+          <p>lib/pages/home_page.dart</p>
+          <pre><code id="code10"></code></pre>
+        </div>
+      </div>
+      <hr />
+      <hr />
+      <div class="dropdown">
+        <div class="heading">Creating Feed and Profile Page</div>
+        <div class="content">
+          <p>lib/pages/home_page.dart</p>
+          <pre><code id="code11"></code></pre>
+          <p>lib/pages/feed_page.dart</p>
+          <pre><code id="code12"></code></pre>
+          <p>lib/pages/profile_page.dart</p>
+          <pre><code id="code13"></code></pre>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <script src="../script.js"></script>
+    <script src="./section_9.js"></script>
+  </body>
+</html>

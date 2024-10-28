@@ -1,0 +1,79 @@
+:root {
+  --black-bg: rgb(40, 40, 40);
+  --font-color: white;
+  --black-bg-light: rgb(255, 255, 255);
+  --font-color-light: rgb(0, 0, 0);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+pre {
+  border: 2px solid black;
+  width: 80%;
+  white-space: pre-wrap; /* Enables wrapping */
+  word-break: break-word; /* Handles long words */
+  resize: both;
+  overflow: auto;
+  padding-left: 10px;
+  margin: 5px;
+}
+
+#index > ol > li {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+#index > ol > li > a {
+  text-decoration: none;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.navbar > ul {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  border: 2px solid black;
+  padding: 5px;
+  margin: 0px;
+}
+
+.navbar > ul > li {
+  list-style: none;
+  margin-right: 25px;
+  margin-left: 25px;
+  background-color: yellow;
+  padding: 5px;
+}
+
+.content {
+  display: none;
+  margin-top: 5px;
+}
+.heading {
+  cursor: pointer;
+}
+
+hr {
+  background-color: black;
+  color: black;
+  border-color: black;
+}
+
+html,
+body,
+hr,
+.block,
+.dropdown,
+.heading {
+  color: var(--font-color-light);
+  background-color: var(--black-bg-light);
+}
+
+body {
+  position: relative;
+}
