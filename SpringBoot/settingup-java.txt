@@ -1,0 +1,22 @@
+sudo apt install -y openjdk-17-jdk
+readlink -f $(which java)    # shows /usr/lib/jvm/.../bin/java
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $JAVA_HOME
+sudo apt install -y maven
+mvn --version
+
+sdk install maven
+sdk install gradle
+
+https://start.spring.io/
+
+GROUP: people who own the project : ( use reverse domain name ex: in.tlbc ) 
+ARTIFACT: ProjectName
+NAME: ProjectName
+PACKAGE_NAME: in.tlbc.projectName
+
+
+# For dependices 
+https://central.sonatype.com/
